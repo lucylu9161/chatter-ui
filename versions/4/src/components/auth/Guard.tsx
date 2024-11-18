@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import excludedRoutes from "../../constants/excluded-routes";
 import { useGetMe } from "../../hooks/useGetMe";
-import { authenticatedVar } from "../../constants/authenticated";
+import { useEffect } from "react";
 import router from "../Routes";
 
 interface GuardProps {
@@ -11,15 +10,9 @@ interface GuardProps {
 const Guard = ({ children }: GuardProps) => {
   const { data: user } = useGetMe();
 
-  // useEffect(() => {
-  //   if (!user && window.location.pathname === "/") {
-  //     router.navigate("/login"); // Redirect to login if not authorized and on root
-  //   }
-  // }, [user]);
-
   useEffect(() => {
-    if (user) {
-      authenticatedVar(true);
+    if (!user && window.location.pathname === "/") {
+      router.navigate("/login"); // Redirect to login if not authorized and on root
     }
   }, [user]);
 
