@@ -5,6 +5,5 @@ import { authenticatedVar } from "../constants/authenticated";
 export const onLogout = () => {
   authenticatedVar(false);
   router.navigate("/login");
-  window.location.reload();
   client.resetStore();
 };

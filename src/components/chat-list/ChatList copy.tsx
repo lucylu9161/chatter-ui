@@ -30,9 +30,9 @@ const ChatList = () => {
             overflow: "auto",
           }}
         >
-          {data?.chats.map((chat) => (
-            <ChatListItem chat={chat as Chat} />
-          ))}
+          {/* {data?.chats.map((chat) => (
+            // <ChatListItem chat={chat as Chat} />
+          ))} */}
         </List>
       </Stack>
     </>
