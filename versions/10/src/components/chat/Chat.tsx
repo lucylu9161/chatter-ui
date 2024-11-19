@@ -21,8 +21,16 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const chatId = params._id!;
   const { data } = useGetChat({ _id: chatId });
+  console.log("data from chat component");
+  console.log(data?.chat);
+  //const deepCopy = JSON.parse(JSON.stringify(data?.chat));
+  //console.log(deepCopy as any);
+  console.log((data?.chat as any)?.name);
   const [createMessage] = useCreateMessage(chatId);
   const { data: messages } = useGetMessages({ chatId });
+  console.log("message is ");
+  console.log(message);
+
   const divRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
@@ -43,14 +51,14 @@ const Chat = () => {
 
   return (
     <Stack sx={{ height: "100%", justifyContent: "space-between" }}>
-      <h1>{data?.chat.name}</h1>
+      <h1>{(data?.chat as any)?.name}</h1>
       <Box sx={{ maxHeight: "70vh", overflow: "auto" }}>
         {messages?.messages.map((message) => (
           <Grid container alignItems="center" marginBottom="1rem">
-            <Grid item xs={2} lg={1}>
+            <Grid item xs={3} md={1}>
               <Avatar src="" sx={{ width: 52, height: 52 }} />
             </Grid>
-            <Grid item xs={10} lg={11}>
+            <Grid item xs={9} md={11}>
               <Stack>
                 <Paper sx={{ width: "fit-content" }}>
                   <Typography sx={{ padding: "0.9rem" }}>
@@ -73,7 +81,6 @@ const Chat = () => {
           justifySelf: "flex-end",
           alignItems: "center",
           width: "100%",
-          margin: "1rem 0",
         }}
       >
         <InputBase
