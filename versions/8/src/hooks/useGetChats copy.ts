@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import { graphql } from "../gql";
 
 export const getChatsDocument = graphql(`
@@ -8,6 +8,18 @@ export const getChatsDocument = graphql(`
     }
   }
 `);
+
+// export const getChatsDocument = gql(`
+//   query Chats {
+//     chats {
+//       _id
+//       userId
+//       isPrivate
+//       userIds
+//       name
+//     }
+//   }
+// `);
 
 const useGetChats = () => {
   return useQuery(getChatsDocument);
