@@ -33,8 +33,6 @@ const Chat = () => {
   const divRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
   const { messagesCount, countMessages } = useCountMessages(chatId);
-  console.log("chat component");
-  console.log(data);
 
   useEffect(() => {
     countMessages();

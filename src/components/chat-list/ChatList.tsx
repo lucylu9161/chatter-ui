@@ -19,8 +19,6 @@ const ChatList = () => {
   });
   const { path } = usePath();
   const { chatsCount, countChats } = useCountChats();
-  console.log("chat list component");
-  console.log(data);
 
   useEffect(() => {
     countChats();
